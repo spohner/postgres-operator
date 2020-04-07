@@ -193,6 +193,8 @@ spec:
                 type: boolean
               enableLogicalBackup:
                 type: boolean
+              disableWALArchiving:
+                type: boolean
               enableMasterLoadBalancer:
                 type: boolean
               enableReplicaLoadBalancer:

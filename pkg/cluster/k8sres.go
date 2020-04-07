@@ -1036,6 +1036,11 @@ func (c *Cluster) generateStatefulSet(spec *acidv1.PostgresSpec) (*appsv1.Statef
 	sort.Slice(customPodEnvVarsList,
 		func(i, j int) bool { return customPodEnvVarsList[i].Name < customPodEnvVarsList[j].Name })
 
+	// disables WAL archiving. An empty WALES3Bucket env var will disable WAL archiving in Spilo
+	if spec.DisableWALArchiving {
+		c.OpConfig.WALES3Bucket = ""
+	}
+
 	if spec.StandbyCluster != nil && spec.StandbyCluster.S3WalPath == "" {
 		return nil, fmt.Errorf("s3_wal_path is empty for standby cluster")
 	}
