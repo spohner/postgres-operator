@@ -185,9 +185,9 @@ These parameters are grouped directly under  the `spec` key in the manifest.
   If you set the `all` special item, it will be mounted in all containers (postgres + sidecars).
   Else you can set the list of target containers in which the additional volumes will be mounted (eg : postgres, telegraf)
   
-* **disableWALArchiving**
-  Disables archiving of WAL logs and uploading to S3. Overrides the WAL_S3_BUCKET environment variable 
-  set in the operator configuration to be blank which tells Spilo to skip WAL archiving. Optional, not set by default.
+* **EnableWALArchiving**
+  Enables archiving of WAL logs and uploading to S3. If set to false the WAL_S3_BUCKET environment variable 
+  in the operator configuration will be overridden to blank which tells Spilo to skip WAL archiving. Default: true. Optional.
 
 ## Postgres parameters
 
